@@ -2,6 +2,8 @@
 const express = require('express'); // Server
 const app = express();
 
+require('dotenv').config();
+
 const crypto = require('crypto'); // For HMAC support
 
 app.use(express.json()); // To parse JSON body

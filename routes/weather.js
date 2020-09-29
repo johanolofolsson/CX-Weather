@@ -18,12 +18,12 @@ router.get('/:city/:country', (req, res) => {
     qs: { q: city + ',' + country, units: 'metric'},
     headers: {
       'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-      'x-rapidapi-key': 'b2bdbbc496mshe80a03c3199915cp1d9b6djsn9bb40c9aa5d6',
+      'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
       useQueryString: true
     }
   };
 
-  request(APIoptions, function (error, res, body) {
+  request(APIoptions, function (error, response, body) {
     if (error) throw new Error(error);
 
     const forecast = JSON.parse(body);
