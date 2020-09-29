@@ -1,0 +1,31 @@
+{
+  "applicationInstall": {
+    "uuid": "4701447f-20f1-4a25-875f-52e36d6a93ae",
+    "deleted": 0,
+    "application": {
+      "baseUrl": "http://localhost:3000",
+      "configureUrl": "http://localhost:3000/install",
+      "description": "RSYS Weather",
+      "deleted": 0,
+      "installUrl": "appInstalls/install",
+      "largeLogo": "https://images.freeimages.com/images/large-previews/2fe/butterfly-1390152.jpg",
+      "mediumLogo": "https://images.freeimages.com/images/large-previews/2fe/butterfly-1390152.jpg",
+      "name": "RSYS Weather",
+      "saveConfigurationUrl": "appInstalls/configuration",
+      "smallLogo": "https://images.freeimages.com/images/large-previews/2fe/butterfly-1390152.jpg",
+      "status": "UP",
+      "publicationStatus": "DEVELOPMENT",
+      "statusMessage": {
+        "body": "O",
+        "eta": 978309000000,
+        "reason": "Someone"
+      },
+      "statusUrl": "status",
+      "uninstallUrl": "uninstall",
+      "uuid": "7e1da507-f54a-4a21-8ac2-cf7a8e9ae7ee",
+      "providerUuid": "15e2caf9-b8f1-422b-8f8c-a2936a395e0e"
+    },
+    "status": "UP"
+  },
+  "secret": "c715fdd3-5413-4e47-aa64-30cadaeb3843-6e44c5c6-6e3d-46d7-be0e-9d69f2406cbb"
+}
