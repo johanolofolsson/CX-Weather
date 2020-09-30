@@ -18,7 +18,7 @@ router.get('/:city/:country', (req, res) => {
     qs: { q: city + ',' + country, units: 'metric'},
     headers: {
       'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-      'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
+      'x-rapidapi-key': process.env.RAPIDAPI_KEY,
       useQueryString: true
     }
   };
