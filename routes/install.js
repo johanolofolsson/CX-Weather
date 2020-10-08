@@ -2,51 +2,59 @@
 const express = require('express');
 const router = express.Router();
 
-const request = require('request');
 const jwt = require('jsonwebtoken');
+const firebase = require('firebase-admin');
 
 
 
 // Data
-const fs = require('fs');
-const installsData = fs.readFileSync('./data/installs.json');
+firebase.initializeApp({
+  credential: firebase.credential.cert(process.env.FIREBASE_CREDENTIALS),
+  databaseURL: 'https://' + process.env.FIRESTORE_DB + '.firebaseio.com'
+});
+
+const db = firebase.firestore();
+db.settings({ timestampsInSnapshots: true }); 
 
 
 
 router.post('/', auth, (req, res) => {
   const installBody = req.body;
-  const installUUID = installBody.applicationInstall.uuid;
-  const installTime = req.payload.iat;
-  const productSub  = req.payload.sub;
-  const tenantID    = req.payload["o.a.p.ctenantId"];
-
-  const installDetails = {
-    installID: installUUID,
-    installTime: installTime,
-    productSub: productSub,
-    tenantID: tenantID
-  };
-
-  const installDetailsJSON = JSON.stringify(installDetails, null, 2);
+  const installUUID = installBody.applicationInstall.uuid;  
+  const installTime = new Date(req.payload.iat * 1000);
+  const productSub = req.payload.sub;
+  const tenantID = req.payload["o.a.p.ctenantId"];
 
 
-  fs.writeFile('./data/installs.json', installDetailsJSON, (err) => {
-    if (err) {
+  async function saveInstall() {
+    const installRef = db.collection('installs').doc(installUUID);
+    await installRef.set({
+      installTime: installTime,
+      productSub: productSub,
+      tenantID: tenantID
+    });
 
+    try {
+      await db.runTransaction(async (t) => {
+        const doc = await t.get(installRef);
+      });
+      await res.status(200).json({
+        message: 'Install saved successfully',
+        installUUID: installRef.id
+      });
+
+      console.log('Install saved successfully');
+    } catch (e) {
       res.status(500).json({
-        message: 'Unable to save install details',
+        message: 'Unable to save install details. ' + e
       });
 
-    } else {
+      console.log('Unable to save install details. ' + e);
+    }
 
-      res.status(200).json({
-        message: 'Install details saved',
-        installUUID: installUUID
-      });
-
-    };
-
-  });
+  }
+  
+  saveInstall();
   
 });
 
@@ -58,13 +66,13 @@ function auth(req, res, next) {
   const authHeader = req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]
   
-  console.log(authHeader);
-  console.log(token);
+  // console.log(authHeader);
+  // console.log(token);
 
   if (token == null) return res.sendStatus(401)
 
   jwt.verify(token, process.env.AMS_SECRET, (err, payload) => {
-    console.log(err)
+    console.log('JWT Verify Error: ', err)
     if (err) return res.sendStatus(403)
     req.payload = payload
     next()
