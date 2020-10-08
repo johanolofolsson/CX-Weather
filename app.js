@@ -3,7 +3,7 @@ const express = require('express'); // Server
 const app = express();
 
 
-require('dotenv').config(); // For secrets
+if (app.get('env') == 'development') { require('dotenv').config(); } // For secrets (development only)
 const crypto = require('crypto'); // For HMAC support
 app.use(express.json()); // To parse JSON body
 
