@@ -9,7 +9,8 @@ const firebase = require('firebase-admin');
 
 // Data
 firebase.initializeApp({
-  credential: firebase.credential.cert(process.env.FIREBASE_CREDENTIALS),
+  credential: firebase.credential.cert(
+    JSON.parse(Buffer.from(process.env.FIREBASE_CREDENTIALS, 'base64').toString('ascii'))), // https://stackoverflow.com/a/61844642
   databaseURL: 'https://' + process.env.FIRESTORE_DB + '.firebaseio.com'
 });
 
