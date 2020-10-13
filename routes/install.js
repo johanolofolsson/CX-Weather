@@ -29,13 +29,13 @@ router.post('/', auth, (req, res) => {
 
   async function saveInstall() {
     const installRef = db.collection('installs').doc(installUUID);
-    await installRef.set({
-      installTime: installTime,
-      productSub: productSub,
-      tenantID: tenantID
-    });
 
     try {
+      await installRef.set({
+        installTime: installTime,
+        productSub: productSub,
+        tenantID: tenantID
+      }); 
       await db.runTransaction(async (t) => {
         const doc = await t.get(installRef);
       });
@@ -45,6 +45,7 @@ router.post('/', auth, (req, res) => {
       });
 
       console.log('Install saved successfully');
+      
     } catch (e) {
       res.status(500).json({
         message: 'Unable to save install details. ' + e
