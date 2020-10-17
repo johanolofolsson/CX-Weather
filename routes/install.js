@@ -26,6 +26,9 @@ router.post('/', auth, (req, res) => {
   const productSub = req.payload.sub;
   const tenantID = req.payload["o.a.p.ctenantId"];
 
+  console.log("Install payload: %j", req.payload); //TODO: temporary, replace this with Firestore
+  console.log("Install body: %j", req.body) //TODO: temporary, replace this with Firestore
+
 
   async function saveInstall() {
     const installRef = db.collection('installs').doc(installUUID);
