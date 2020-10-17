@@ -68,16 +68,16 @@ function auth(req, res, next) {
   const authHeader = req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]
   
-  // console.log(authHeader);
-  // console.log(token);
-
   if (token == null) return res.sendStatus(401)
 
   jwt.verify(token, process.env.AMS_SECRET, (err, payload) => {
-    console.log('JWT Verify Error: ', err)
-    if (err) return res.sendStatus(403)
-    req.payload = payload
-    next()
+    if (err) {
+      console.log(err)
+      return res.sendStatus(403)
+    } else {
+      req.payload = payload
+      next()
+    }
   })
 };
 
