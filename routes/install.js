@@ -21,7 +21,7 @@ db.settings({ timestampsInSnapshots: true });
 
 router.post('/', auth, (req, res) => {
   const installBody = req.body;
-  const installUUID = installBody.applicationInstall.uuid;  
+  const installUUID = installBody.applicationInstall.uuid; //TODO: consider using `req.payload.aud` instead
   const installTime = new Date(req.payload.iat * 1000);
   const productSub = req.payload.sub;
   const tenantID = req.payload["o.a.p.ctenantId"];
@@ -42,7 +42,7 @@ router.post('/', auth, (req, res) => {
       await db.runTransaction(async (t) => {
         const doc = await t.get(installRef);
       });
-      await res.status(200).json({
+      res.status(200).json({
         message: 'Install saved successfully',
         installUUID: installRef.id
       });
