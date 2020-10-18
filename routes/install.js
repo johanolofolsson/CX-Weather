@@ -1,4 +1,6 @@
-// Dependencies
+/*
+ * DEPENDENCIES
+ */
 const express = require('express');
 const router = express.Router();
 
@@ -7,7 +9,9 @@ const firebase = require('firebase-admin');
 
 
 
-// Data
+/*
+ * DATA
+ */
 firebase.initializeApp({
   credential: firebase.credential.cert(
     JSON.parse(Buffer.from(process.env.FIREBASE_CREDENTIALS, 'base64').toString('ascii'))), // https://stackoverflow.com/a/61844642
@@ -19,6 +23,9 @@ db.settings({ timestampsInSnapshots: true });
 
 
 
+/*
+ * AMS TO APP
+ */
 router.post('/', auth, (req, res) => {
   const installBody = req.body;
   const installUUID = installBody.applicationInstall.uuid; //TODO: consider using `req.payload.aud` instead
@@ -30,6 +37,7 @@ router.post('/', auth, (req, res) => {
   console.log("Install body: %j", req.body) //TODO: temporary, replace this with Firestore
 
 
+  /* Save to Firestore */
   async function saveInstall() {
     const installRef = db.collection('installs').doc(installUUID);
 
@@ -57,16 +65,18 @@ router.post('/', auth, (req, res) => {
       console.log('Unable to save install details. ' + e);
     }
 
-  }
-  
-  saveInstall();
+  } saveInstall();
   
 });
 
 
 
-// https://www.youtube.com/watch?v=mbsmsi7l3r4&ab_channel=WebDevSimplified
-// https://github.com/WebDevSimplified/JWT-Authentication/blob/master/server.js
+/*
+ * JSON WEB TOKEN VERIFICATION
+ *
+ * https://www.youtube.com/watch?v=mbsmsi7l3r4&ab_channel=WebDevSimplified
+ * https://github.com/WebDevSimplified/JWT-Authentication/blob/master/server.js
+ */
 function auth(req, res, next) {
   const authHeader = req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]

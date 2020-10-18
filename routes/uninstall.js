@@ -1,4 +1,6 @@
-// Dependencies
+/*
+ * DEPENDENCIES
+ */
 const express = require('express');
 const router = express.Router();
 
@@ -7,11 +9,16 @@ const firebase = require('firebase-admin');
 
 
 
-// Data
+/*
+ * DATA
+ */
 const db = firebase.firestore();
 
 
 
+/*
+ * AMS TO APP
+ */
 router.post('/', auth, (req, res) => {
   const installUUID = req.payload.aud;
   const uninstallUUID = req.body.uuid;  
@@ -21,6 +28,7 @@ router.post('/', auth, (req, res) => {
   console.log("Uninstall body: %j", req.body) //TODO: temporary, replace this with Firestore
 
 
+  /* Save to Firestore */ 
   async function saveUninstall() {
     const installRef = db.collection('installs').doc(installUUID);
 
@@ -63,16 +71,18 @@ router.post('/', auth, (req, res) => {
       console.log('Unable to save uninstall details. ' + e);
     }
 
-  }
-  
-  saveUninstall();
+  } saveUninstall();
   
 });
 
 
 
-// https://www.youtube.com/watch?v=mbsmsi7l3r4&ab_channel=WebDevSimplified
-// https://github.com/WebDevSimplified/JWT-Authentication/blob/master/server.js
+/*
+ * JSON WEB TOKEN VERIFICATION
+ *
+ * https://www.youtube.com/watch?v=mbsmsi7l3r4&ab_channel=WebDevSimplified
+ * https://github.com/WebDevSimplified/JWT-Authentication/blob/master/server.js
+ */
 function auth(req, res, next) {
   const authHeader = req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]
