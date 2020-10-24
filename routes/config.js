@@ -27,25 +27,32 @@ router.post('/', auth, (req, res) => {
   console.log("Config payload: %j", req.payload); //TODO: temporary, replace this with Firestore
   console.log("Config body: %j", req.body) //TODO: temporary, replace this with Firestore
 
-  /* Display Config page */
-  res.render('config.njk');
+  /* Check for Install in Firestore */ 
+  async function checkInstall() {
+    const installRef = db.collection('installs').doc(installUUID);
+    const doc = await installRef.get();
+
+    if (!doc.exists) {
+      console.log('Config: Install details not found.');
+
+      /* Display error page */
+      res.render('config-error.njk');
+
+    } else {
+      console.log('Config: Install details found.');
+          
+      /* Display config page */
+      res.render('config.njk');
+    }
+
+  } checkInstall();
 
   /* Update Config page */
   //TODO: Display save confirmation on config page
   
 });
-
-
-
-/*
- * FORM TO APP
- *
- * Also posts data back to AMS
- */
-router.post('/submit', (req, res) => {
-  //TODO: Post form submit back to AMS
-  console.log(req.body.temp_unit);
-  res.end()
+router.get('/', (req, res) => { 
+  res.render('config.njk');
 });
 
 
@@ -54,10 +61,60 @@ router.post('/submit', (req, res) => {
  * AMS TO APP: SAVE CONFIG
  */
 router.post('/save', auth, (req, res) => {
+  const installUUID = req.body.installUuid;
+  const appConfig = req.body.payload;
+  const appConfigTime = new Date(Date.now());
+
+  console.log("App config payload: %j", req.payload); //TODO: temporary, replace this with Firestore
+  console.log("App config body: %j", req.body) //TODO: temporary, replace this with Firestore
+
+
+  /* Save to Firestore */ 
+  async function saveConfig() {
+    const installRef = db.collection('installs').doc(installUUID);
+
+    try {
+      await installRef.update({
+        appConfig: [appConfig],
+        appConfigTime: appConfigTime
+      }); 
+
+      await db.runTransaction(async (t) => {
+        const doc = await t.get(installRef);
+
+        const appConfiguration = doc.data().appConfig;
+        console.log("App Config = %j", + appConfiguration);
+
+        if (appConfiguration != null) {
+          res.status(200).json({
+            configurationStatus: 'CONFIGURED',
+            // payload: appConfiguration
+          });
+
+          console.log('App config saved successfully');
+
+        } else {
+
+          res.status(500).json({
+            configurationStatus: 'ERROR'
+          });
+
+          console.log('Unable to save app config.');
+        }
+      });
+
+    } catch (e) {
+      res.status(500).json({
+        configurationStatus: 'ERROR'
+      });
+
+      console.log('Unable to save app config. ' + e);
+    }
+
+  } saveConfig();
   //TODO: Handle AMS save-config
   //TODO: Save config to Firestore
   //TODO: Status 200 to AMS
-  //TODO: Send payload, for config page
 });
 
 

@@ -186,6 +186,10 @@
         display: table;
         clear: both;
       }
+
+      .error {
+        color: #c74634;
+      }
   </style>
 </head>
 <body>
@@ -203,25 +207,11 @@
   
     <main class="wrapper">
     
-      <h1>App Configuration</h1>
+      <h1 class="error">Error! 🤖</h1>
   
-      <p><strong>Thank you for installing CX Weather!</strong></p>
-      <p>CX Weather is powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a>. If you haven&rsquo;t already, please <a href="https://www.weatherapi.com/signup.aspx" title="Sign up for Weather API">create an account</a>. Once you&rsquo;re signed in, grab your API key and enter it&nbsp;below:</p>
-
-  
-      <form id="config-form">
-        <hr />
-        <fieldset>
-          <label for="api-key"><span>Your API Key</span></label>
-          <input id="api-key" type="text" name="api_key" />
-        </fieldset>
-        <hr />
-  
-        <button id="js-btn" class="button">Save</button>
-
-      </form>
-  
-  
+      <p><strong>We can&rsquo;t find your install details, sorry about that! </strong></p>
+      <p>Please try uninstalling and reinstalling CX Weather, and try to configure the app&nbsp;again.</p>
+    
     </main>
 
   </div>
@@ -234,45 +224,6 @@
       <small class="smallprint  credit">Powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a></small>
     </div>
   </footer>
-
-
-
-   <script type="text/javascript">
-    // https://docs.oracle.com/en/cloud/saas/marketing/ams-develop/Developers/ams/develop/app-configuration.htm#SaveConfigurationURLSampleAppCode
-    // Section: "Sample App Implementation: PostMessage"
-    function attachMessageListener() {
-      var messageHandlerFunction = this.handleMessage.bind(this);
-      window.addEventListener("message", messageHandlerFunction, false);
-    };
-
-    function handleMessage(event) {
-      if(event && event.data) {
-        console.log("App Config: received event from AMS. ", event);
-
-        //TODO: test the values that come back, show/hide some notifications on the page based the result.
-      }
-    }
-
-
-    // https://youtu.be/NxVCq4p0Kb0
-    // https://gist.github.com/prof3ssorSt3v3/52ebd432bb7b8a155985a2f82509541d
-    const submitConfig = (ev)=>{
-      ev.preventDefault(); // To stop the form submitting
-      const message = {
-        amsAction: 'saveappconfig',
-        requestId: 'saveappconfig',
-        payload: {
-          weatherAPIkey: document.getElementById('api-key').value
-        }
-      };
-
-      window.parent.postMessage(message, '*');
-      console.log('Config form submit: ' + JSON.stringify(message));
-    }
-    document.addEventListener('DOMContentLoaded', ()=>{
-      document.getElementById('js-btn').addEventListener('click', submitConfig);
-    });
-  </script>
 
 </body>
 </html>
