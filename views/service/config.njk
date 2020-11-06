@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CX Weather Service Configuration</title>
+  <link rel="stylesheet" href="/assets/app.css"/>
+</head>
+<body class="">
+
+  <div class="page">
+
+    <header>
+      <div class="wrapper">
+          <svg class="logo" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+          </svg><!--
+     --><strong class="logotype">CX Weather</strong>
+      </div>
+    </header>
+  
+  
+  
+    <main class="wrapper">
+    
+      <h1>Service Configuration</h1>
+  
+      <p><strong>Just a few more steps before CX Weather is ready to use!</strong></p>
+      <p>Please select the relevant options for your program&rsquo;s locale below. This lets CX Weather know which units-of-measure to send back to the&nbsp;program.</p>
+      
+  
+      <form id="service-config-form">
+        <hr />
+        <fieldset>
+          <legend class="form-heading">Temperature Unit</legend>
+  
+          <input id="temp-celsius" type="radio" name="temp_unit" value="C" checked />
+          <label class="radio-label" for="temp-celsius"><span>Celsius</span></label>
+  
+          <input id="temp-fahrenheit" type="radio" name="temp_unit" value="F" />
+          <label class="radio-label" for="temp-fahrenheit"><span>Fahrenheit</span></label>
+        </fieldset><!--
+  
+      --><fieldset>
+          <legend class="form-heading">Speed/Distance Unit</legend>
+  
+          <input id="dist-km" type="radio" name="dist_unit" value="km" checked />
+          <label class="radio-label" for="dist-km"><span>Kilometres</span></label>
+  
+          <input id="dist-m" type="radio" name="dist_unit" value="m" />
+          <label class="radio-label" for="dist-m"><span>Miles</span></label>
+        </fieldset>
+        <hr />
+  
+        <button id="js-btn" class="button">Save</button>
+        
+      </form>
+  
+  
+    </main>
+
+  </div>
+
+
+
+  <footer class="clearfix">
+    <div class="wrapper">
+      <small class="smallprint  copyright">&copy; <script>document.write(new Date().getFullYear())</script> Oracle CX</small>
+      <small class="smallprint  credit">Powered by <a href="https://www.weatherapi.com/" title="Free Weather API" target="_blank">WeatherAPI.com</a></small>
+    </div>
+  </footer>
+
+</body>
+</html>

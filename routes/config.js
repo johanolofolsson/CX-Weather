@@ -36,13 +36,13 @@ router.post('/', auth, (req, res) => {
       console.log('Config: Install details not found.');
 
       /* Display error page */
-      res.render('config-error.njk');
+      res.render('shared/config-error.njk');
 
     } else {
       console.log('Config: Install details found.');
           
       /* Display config page */
-      res.render('config.njk');
+      res.render('install/config.njk');
     }
 
   } checkInstall();
@@ -54,10 +54,10 @@ router.post('/', auth, (req, res) => {
 
 /* For testing things without API */
 router.get('/test', (req, res) => { 
-  res.render('config.njk');
+  res.render('install/config.njk');
 });
 router.get('/test-error', (req, res) => { 
-  res.render('config-error.njk');
+  res.render('shared/config-error.njk');
 });
 
 
