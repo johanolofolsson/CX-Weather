@@ -51,8 +51,13 @@ router.post('/', auth, (req, res) => {
   //TODO: Display save confirmation on config page
   
 });
-router.get('/', (req, res) => { 
+
+/* For testing things without API */
+router.get('/test', (req, res) => { 
   res.render('config.njk');
+});
+router.get('/test-error', (req, res) => { 
+  res.render('config-error.njk');
 });
 
 

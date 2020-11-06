@@ -1,201 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CX Weather App Configuration</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
-  <style>
-    html, body {
-      height: 100%;
-      background-color: #fff;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      margin: 0;
-      padding: 0;
-      font-size: 18px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-      background-color: #fff;
-    }
-
-    h1 {
-      margin-top: 1.5em;
-    }
-
-    p {
-      line-height: 1.4;
-    }
-
-    a {
-      color: #c74634;
-    }
-    a:hover {
-      color: #ae2d1b;
-    }
-
-    hr {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      border-bottom-style: solid;
-      border-bottom-width: 1px;
-      border-bottom-color: #ddd;
-    }
-
-
-    .page {
-      flex: 1 0 auto;
-    }
-
-    header {
-      background-color: #c74634;
-    }
-
-      .logo {
-        display: inline-block;
-        vertical-align: middle;
-        width: 3rem;
-        height: 3rem;
-        margin-top: -0.15em;
-        margin-left: -12px;
-        line-height: 4rem;
-      }
-
-      .logotype {
-        display: inline-block;
-        vertical-align: middle;
-        padding-left: 0.2rem;
-        font-size: 0.85em;
-        line-height: 4rem;
-        letter-spacing: 0.02em;
-        color: #fff;
-      }
-
-
-    main {
-      margin-bottom: 4em;
-    }
-
-    .wrapper {
-      max-width: 36em;
-      margin-left:  auto;
-      margin-right: auto;
-      padding-left: 2em;
-      padding-right: 2em;
-    }
-
-
-    form {
-      margin-top: 2em;
-      margin-bottom: 4em;
-    }
-
-      fieldset {
-        display: inline-block;
-        padding:0;
-        margin: 0;
-        margin-top: 1.5em;
-        min-inline-size: min-content;
-        border: none;
-      }
-
-        label {
-          display: block;
-          font-size: 0.8em;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          font-weight: bold;
-          margin-bottom: 0.75em;
-        }
-
-        input[type="text"] {
-          width: 18em;
-          padding: .375rem .75rem;
-          margin-bottom: 1.5em;
-          line-height: 1.5;
-          background-color: #fff;
-          background-clip: padding-box;
-          border: 1px solid #666;
-          border-radius: .25rem;
-          transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-        }
-        input[type="text"]:focus {
-          border-color: #c74634;
-          outline: 0;
-        }
-
-        .button {
-          display: block;
-          margin-top: 1.5em;
-          font-weight: bold;
-          text-align: center;
-          white-space: nowrap;
-          vertical-align: middle;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-          border: 1px solid transparent;
-          padding: .6em 1.75em;
-          line-height: 1.5;
-          border-radius: .25rem;
-          transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-          cursor: pointer;
-          color: #fff;
-          background-color: #c74634;
-          border-color: #c74634;
-        }
-        .button:hover {
-          color: #fff;
-          background-color: #ae2d1b;
-          border-color: #ae2d1b;
-        }
-
-
-    footer {
-      flex-shrink: 0;
-      border-top-style: solid;
-      border-top-width: 1px;
-      border-top-color: #ddd;
-    }
-
-      .smallprint {
-        line-height: 4rem;
-        text-align: right;
-      }
-
-      .copyright {
-        display: inline-block;
-        float: left;
-        text-align: left;
-        font-weight: bold;
-      }
-
-      .credit {
-        display: inline-block;
-        float: right;
-        text-align: right;
-      }
-
-
-      .clearfix:after {
-        content: "";
-        display: table;
-        clear: both;
-      }
-  </style>
+  <link rel="stylesheet" href="../assets/normalize.css"/>
+  <link rel="stylesheet" href="../assets/config.css"/>
 </head>
-<body>
+<body class="">
 
   <div class="page">
 
     <header>
       <div class="wrapper">
-        <img class="logo" src="http://static.cdn.responsys.net/i5/responsysimages/content/tservemeaz0/cx-weather-logo--large.png" alt="CX Weather"/><!--
-    --><strong class="logotype">CX Weather</strong>
+          <svg class="logo" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+          </svg><!--
+     --><strong class="logotype">CX Weather</strong>
       </div>
     </header>
   
@@ -206,7 +27,7 @@
       <h1>App Configuration</h1>
   
       <p><strong>Thank you for installing CX Weather!</strong></p>
-      <p>CX Weather is powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a>. If you haven&rsquo;t already, please <a href="https://www.weatherapi.com/signup.aspx" title="Sign up for Weather API">create an account</a>. Once you&rsquo;re signed in, grab your API key and enter it&nbsp;below:</p>
+      <p>CX Weather is powered by <a href="https://www.weatherapi.com/" title="Free Weather API" target="_blank">WeatherAPI.com</a>. If you haven&rsquo;t already, please <a href="https://www.weatherapi.com/signup.aspx" title="Sign up for Weather API" target="_blank">create an account</a>. Once you&rsquo;re signed in, grab your API key and enter it&nbsp;below:</p>
 
   
       <form id="config-form">
@@ -220,9 +41,43 @@
         <button id="js-btn" class="button">Save</button>
 
       </form>
-  
-  
+
+
     </main>
+
+
+    <div id="js-modal-wrapper" class="modal-wrapper">
+      <div id="js-modal-tile" class="modal-tile">
+        <div id="js-modal-card" class="modal-card">
+
+          <div id="js-modal--saving" class="modal-inner">
+            <div class="icon">
+              <div class="saving"></div>
+            </div>
+            <span class="modal-heading">Saving</span>
+            <p class="modal-text">Talking to AMS.<br/>Ready in a&nbsp;jiffy.</p>
+          </div><!--
+  
+       --><div id="js-modal--success" class="modal-inner modal-inner--success">
+            <div class="icon icon--success">
+              <div id="js-modal-icon--success" class="saving saving--success"></div>
+            </div>
+            <span class="modal-heading">Success</span>
+            <p class="modal-text">Lorem ipsum success text&nbsp;here.</p>
+          </div><!--
+  
+       --><div id="js-modal--error" class="modal-inner modal-inner--error">
+            <div class="icon icon--error">
+              <div id="js-modal-icon--error" class="saving saving--error"></div>
+            </div>
+            <span class="modal-heading">Error</span>
+            <p class="modal-text">Oops! Failed lorem ipsum text&nbsp;here.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
 
   </div>
 
@@ -231,15 +86,19 @@
   <footer class="clearfix">
     <div class="wrapper">
       <small class="smallprint  copyright">&copy; <script>document.write(new Date().getFullYear())</script> Oracle CX</small>
-      <small class="smallprint  credit">Powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a></small>
+      <small class="smallprint  credit">Powered by <a href="https://www.weatherapi.com/" title="Free Weather API" target="_blank">WeatherAPI.com</a></small>
     </div>
   </footer>
 
 
 
    <script type="text/javascript">
-    // https://docs.oracle.com/en/cloud/saas/marketing/ams-develop/Developers/ams/develop/app-configuration.htm#SaveConfigurationURLSampleAppCode
-    // Section: "Sample App Implementation: PostMessage"
+    /*
+     * AMS TO FORM: RESPONSE
+     *
+     * https://docs.oracle.com/en/cloud/saas/marketing/ams-develop/Developers/ams/develop/app-configuration.htm#SaveConfigurationURLSampleAppCode
+     * Section: "Sample App Implementation: PostMessage"
+     */
     function attachMessageListener() {
       var messageHandlerFunction = this.handleMessage.bind(this);
       window.addEventListener("message", messageHandlerFunction, false);
@@ -249,13 +108,35 @@
       if(event && event.data) {
         console.log("App Config: received event from AMS. ", event);
 
-        //TODO: test the values that come back, show/hide some notifications on the page based the result.
+        //TODO: success/error modals
+        /*function success() {
+          ...
+        }*/
       }
     }
 
+    /* Just for quick testing */
+    var saveStatus = "success";
+    {# var saveStatus = "error"; #}
+    setTimeout(() => {
+      if(saveStatus === "success") {
+        document.querySelector("#js-modal-tile").classList.add("success");
+        document.querySelector("#js-modal--success").classList.add("is-active");
+      } else {
+        document.querySelector("#js-modal-tile").classList.add("error");
+        document.querySelector("#js-modal--error").classList.add("is-active");
+      };
+      document.querySelector("#js-modal--saving").setAttribute("aria-hidden", "true");
+    }, 4000);
+    
 
-    // https://youtu.be/NxVCq4p0Kb0
-    // https://gist.github.com/prof3ssorSt3v3/52ebd432bb7b8a155985a2f82509541d
+
+    /*
+     * FORM TO AMS: SUBMIT
+     *
+     * https://youtu.be/NxVCq4p0Kb0
+     * https://gist.github.com/prof3ssorSt3v3/52ebd432bb7b8a155985a2f82509541d
+     */
     const submitConfig = (ev)=>{
       ev.preventDefault(); // To stop the form submitting
       const message = {
@@ -265,6 +146,8 @@
           weatherAPIkey: document.getElementById('api-key').value
         }
       };
+
+      document.querySelector("#js-modal-wrapper").classList.add("show");
 
       window.parent.postMessage(message, '*');
       console.log('Config form submit: ' + JSON.stringify(message));
