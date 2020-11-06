@@ -1,0 +1,307 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background-color: #fff;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  position: relative; /* For Modal */
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  background-color: #fff;
+}
+
+h1 {
+  margin-top: 1.5em;
+}
+
+p {
+  line-height: 1.4;
+}
+
+a {
+  color: #c74634;
+}
+a:hover {
+  color: #ae2d1b;
+}
+
+hr {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #ddd;
+}
+
+
+.page {
+  flex: 1 0 auto;
+}
+
+header {
+  background-color: #c74634;
+}
+
+  .logo {
+    display: inline-block;
+    vertical-align: middle;
+    width:  2rem;
+    height: 2rem;
+    margin-top: -0.15em;
+    margin-left: -0.25em;
+    line-height: 4rem;
+    color: #fff;
+  }
+
+  .logotype {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 0.6rem;
+    font-size: 0.85em;
+    line-height: 4rem;
+    letter-spacing: 0.02em;
+    color: #fff;
+  }
+
+
+main {
+  margin-bottom: 4em;
+}
+
+.wrapper {
+  max-width: 36em;
+  margin-left:  auto;
+  margin-right: auto;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+
+form {
+  margin-top: 2em;
+  margin-bottom: 4em;
+}
+
+  fieldset {
+    display: inline-block;
+    padding:0;
+    margin: 0;
+    margin-top: 1.5em;
+    min-inline-size: min-content;
+    border: none;
+  }
+
+    label {
+      display: block;
+      font-size: 0.8em;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: bold;
+      margin-bottom: 0.75em;
+    }
+
+    input[type="text"] {
+      width: 18em;
+      padding: .375rem .75rem;
+      margin-bottom: 1.5em;
+      line-height: 1.5;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #666;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    input[type="text"]:focus {
+      border-color: #c74634;
+      outline: 0;
+    }
+
+    .button {
+      display: block;
+      margin-top: 1.5em;
+      font-weight: bold;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border: 1px solid transparent;
+      padding: .6em 1.75em;
+      line-height: 1.5;
+      border-radius: .25rem;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      cursor: pointer;
+      color: #fff;
+      background-color: #c74634;
+      border-color: #c74634;
+    }
+    .button:hover {
+      color: #fff;
+      background-color: #ae2d1b;
+      border-color: #ae2d1b;
+    }
+
+
+/* 
+ * https://www.w3schools.com/howto/howto_css_modals.asp
+ * https://codepen.io/timothylong/pen/HhAer
+ */
+.modal-wrapper {
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top:    0;
+  bottom: 0;
+  right:  0;
+  left:   0;
+  width:  100%;
+  height: 100%;
+  visibility: hidden; 
+  opacity: 0;
+  transition: all ease-in 0.3s;
+}
+.modal-wrapper.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+  .modal-tile {
+    width:  16rem;
+    height: 16rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    text-align: center;
+    background-color: #fff;
+    border-radius: .5rem;
+    
+  }
+
+    .modal-card {
+      width: 48rem;
+      clear: both;
+      transition: transform ease-in 0.3s;
+    }
+    .success .modal-card {
+      transform: translate(-16rem, 0);
+    }
+    .error .modal-card {
+      transform: translate(-16rem, 0);
+    }
+
+      .modal-inner {
+        width: 16rem;
+        height: 16rem;
+        padding: 2rem;
+        float: left;
+      }
+      .modal-inner--success,
+      .modal-inner--error {
+        display: none;
+      }
+      .modal-inner.is-active {
+        display: block;
+      }
+      .modal-inner.is-hidden {
+        display: none;
+      }
+
+        .modal-heading {
+          display: inline-block;
+          margin-top: 2rem;
+          font-size: 0.8em;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          font-weight: bold;
+        }
+
+        .modal-text {
+          margin: 0.5em 0;
+        }
+
+        .icon {
+          margin: 0.5em auto 0 auto;
+          background-image: url(../assets/saving.svg);
+          background-size: 1.75em 1.75em;
+          background-repeat: no-repeat;
+          background-position: center;
+          transition: all ease-in 0.3s;
+        }
+        .icon--success {
+          background-image: url(../assets/success.svg);
+        }
+        .icon--error {
+          background-image: url(../assets/error.svg);
+        }
+
+          /* 
+          * https://codepen.io/bradtraversy/pen/YLNYQE
+          */
+          .saving {
+            width:  3em;
+            height: 3em;
+            margin: 0 auto 0 auto;
+            border-radius: 50%;
+            border: 3px solid lightgray;
+            border-top-color: #236a7b;
+            animation: spinner 0.7s linear infinite;
+          }
+          .saving--success {
+            border-color: #279544;
+            animation: none;
+          }
+          .saving--error {
+            border-color: #c74634;
+            animation: none;
+          }
+
+            @keyframes spinner {
+              to {
+                transform: rotate(360deg);
+              }
+            }
+
+
+footer {
+  flex-shrink: 0;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #ddd;
+}
+
+  .smallprint {
+    line-height: 4rem;
+    text-align: right;
+  }
+
+  .copyright {
+    display: inline-block;
+    float: left;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .credit {
+    display: inline-block;
+    float: right;
+    text-align: right;
+  }
+
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

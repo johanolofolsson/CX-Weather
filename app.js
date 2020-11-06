@@ -36,6 +36,8 @@ const configRoutes    = require('./routes/config');
 /*
  * ROUTES
  */
+app.use('/assets', express.static('assets'));
+
 app.use('/install',   installRoutes);
 app.use('/uninstall', uninstallRoutes);
 app.use('/config',    configRoutes);
