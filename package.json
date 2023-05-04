@@ -1,15 +1,20 @@
 {
   "name": "cx-weather",
-  "version": "1.0.0",
   "description": "A Node.js demo app for Responsys CX Apps",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "author": "Johan Olsson (https://github.com/johanolofolsson)",
+  "homepage": "https://github.com/johanolofolsson/CX-Weather#readme",
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/johanolofolsson/CX-Weather"
+	},
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "node server.js",
     "dev": "npx nodemon -e js,njk server.js"
   },
-  "author": "Johan Olsson",
-  "license": "UNLICENSED",
   "engines": {
     "node": "14.2.x"
   },
