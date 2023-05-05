@@ -13,12 +13,13 @@
 ![.env](https://img.shields.io/badge/.ENV-ECD53F.svg?style=for-the-badge&logo=dotenv&logoColor=black)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37.svg?style=for-the-badge&logo=Postman&logoColor=white)
 
+
 ## Intro
 
 A demo [Oracle CX app](https://docs.oracle.com/en/cloud/saas/marketing/ams-develop/Developers/rsys/responsys-apps-overview.htm) for Oracle Responsys.
 * Built with Node.js and Express, 
 * hosted on Heroku, 
-* with a Firestore database.
+* with a Firestore backend.
 
 ---
 
